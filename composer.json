@@ -1,0 +1,17 @@
+{
+    "require-dev": {
+    	"selrahcd/phpunit-test-run-logger": "0.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "MarsRover\\": "src/"
+        }
+    },
+     "autoload-dev": {
+		"psr-4": {
+			"MarsRover\\": "tests/"
+		}
+	},
+    "require": {}
+}
