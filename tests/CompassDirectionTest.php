@@ -6,7 +6,7 @@ namespace MarsRover;
 
 use PHPUnit\Framework\TestCase;
 
-final class DirectionTest extends TestCase
+final class CompassDirectionTest extends TestCase
 {
     public function testItInitialDirection() {
         $direction = new Direction('N');
