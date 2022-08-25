@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 
 class MarsRoverTest extends TestCase
 {
-
     public function testItExecutesSomething(): void
     {
         // Arrange
