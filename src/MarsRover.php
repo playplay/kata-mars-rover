@@ -6,8 +6,12 @@ namespace MarsRover;
 
 final class MarsRover
 {
+    private string $x = '0';
+    private string $y = '0';
+    private string $d = 'N';
+
     public function execute(string $command): string
     {
-        return '0:0:N';
+        return "$this->x:$this->y:$this->d";
     }
 }

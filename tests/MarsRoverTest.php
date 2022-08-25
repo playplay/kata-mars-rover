@@ -18,4 +18,14 @@ class MarsRoverTest extends TestCase
         // Assert
         $this->assertEquals('0:0:N', $commandResult);
     }
+    
+    public function testItThrowsAnExceptionWhenEmptyCommand(): void
+    {
+        // Arrange
+        
+        // Act
+        
+        // Assert
+        
+    }
 }
