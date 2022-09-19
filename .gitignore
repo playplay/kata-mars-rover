@@ -1,3 +1,5 @@
 vendor
 .phpunit.result.cache
+.idea
+composer.lock
 test-run-logs.txt

@@ -1,4 +1,4 @@
-_commit: 0.6.2
+_commit: 0.8.0
 _src_path: gh:selrahcd/copier-php-kata
 include_docker: true
 include_sample_test: true
