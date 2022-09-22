@@ -17,7 +17,7 @@ final class MarsRover
     public function execute(string $input): string
     {
         $position = new Position(0, 0);
-        $direction = 'N';
+        $direction = new Direction('N');
         foreach (str_split($input) as $letter) {
             if ($letter === 'R' || $letter === 'L') {
                 $direction = $this->directionHandler->switchDirection($direction, $letter);
@@ -32,8 +32,8 @@ final class MarsRover
         return $this->displayOutput($position, $direction);
     }
 
-    private function displayOutput(Position $position, string $direction): string
+    private function displayOutput(Position $position, Direction $direction): string
     {
-        return $position->x . self::SEPARATOR . $position->y . self::SEPARATOR . $direction;
+        return $position->x . self::SEPARATOR . $position->y . self::SEPARATOR . $direction->value;
     }
 }

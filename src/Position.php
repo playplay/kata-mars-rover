@@ -15,18 +15,18 @@ final class Position
         $this->y = $y;
     }
 
-    public function move(string $direction): Position
+    public function move(Direction $direction): Position
     {
         $x = $this->x;
         $y = $this->y;
 
-        if ($direction === 'N') {
+        if ($direction->value === 'N') {
             $y++;
-        } elseif ($direction === 'S') {
+        } elseif ($direction->value === 'S') {
             $y--;
-        } elseif ($direction === 'E') {
+        } elseif ($direction->value === 'E') {
             $x++;
-        } elseif ($direction === 'W') {
+        } elseif ($direction->value === 'W') {
             $x--;
         }
 

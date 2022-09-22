@@ -6,7 +6,7 @@ namespace MarsRover;
 
 final class DirectionHandler
 {
-    public function switchDirection(string $initialDirection, string $leftOrRight): string
+    public function switchDirection(Direction $direction, string $leftOrRight): Direction
     {
         $directions = [
             'N',
@@ -15,20 +15,20 @@ final class DirectionHandler
             'W',
         ];
 
-        $initialPositionIndex = array_search($initialDirection, $directions);
+        $initialPositionIndex = array_search($direction->value, $directions);
 
         $newPosition = $leftOrRight === 'R'
             ? $initialPositionIndex + 1
             : $initialPositionIndex - 1;
 
         if ($newPosition < 0) {
-            return 'W';
+            return new Direction('W');
         }
 
         if ($newPosition === count($directions)) {
-            return 'N';
+            return new Direction('N');
         }
 
-        return $directions[$newPosition];
+        return new Direction($directions[$newPosition]);
     }
 }
