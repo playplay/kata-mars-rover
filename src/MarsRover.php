@@ -10,6 +10,7 @@ class MarsRover
 
     private int $actualDirection = 0;
     private int $actualY = 0;
+    private int $actualX = 0;
 
     public function execute(string $command = ''): string
     {
@@ -25,16 +26,22 @@ class MarsRover
                     $this->actualDirection += 4;
                 }
             } else {
-                $this->actualY++ % 10;
+                if ($this->actualDirection === 3) {
+                    $this->actualX++;
+                }
 
-                if ($this->actualY === 10) {
-                    $this->actualY = 0;
+                else {
+                    $this->actualY++;
+
+                    if ($this->actualY === 10) {
+                        $this->actualY = 0;
+                    }
                 }
             }
         }
 
         $direction = self::DIRECTIONS[$this->actualDirection % 4];
 
-        return "0:{$this->actualY}:{$direction}";
+        return "{$this->actualX}:{$this->actualY}:{$direction}";
     }
 }
