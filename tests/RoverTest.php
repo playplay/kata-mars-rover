@@ -13,4 +13,10 @@ final class RoverTest extends TestCase
 		$testedInstance = new Rover();
         $this->assertIsObject($testedInstance);
 	}
+
+    public function testItReturnsAString(): void
+    {
+        $rover = new Rover();
+        $this->assertIsString($rover->execute());
+    }
 }
