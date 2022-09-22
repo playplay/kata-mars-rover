@@ -6,7 +6,7 @@ namespace MarsRover;
 
 use PHPUnit\Framework\TestCase;
 
-class SampleTest extends TestCase
+class MasrRoverTest extends TestCase
 {
     private MarsRover $sut;
 
@@ -27,20 +27,21 @@ class SampleTest extends TestCase
     /**
      * @dataProvider switchDirectionDataProvider
      */
-    public function testItTurnsTwoTimesLeftWhenLLInput(string $input, string $expectedOutput): void
+    public function testItSwitchesDirection(string $input, string $expectedOutput): void
     {
         $position = $this->sut->execute($input);
 
         $this->assertSame($expectedOutput, $position);
     }
 
-    public function testItMovesUpWhenDirectionIsNorth(): void
+    /**
+     * @dataProvider moveNorthDataProvider
+     */
+    public function testItMoves(string $input, string $expectedOutput): void
     {
-        $input = 'M';
-
         $position = $this->sut->execute($input);
 
-        $this->assertSame('0:1:N', $position);
+        $this->assertSame($expectedOutput, $position);
     }
 
     private function switchDirectionDataProvider(): array
@@ -52,6 +53,25 @@ class SampleTest extends TestCase
             ['LLL', '0:0:E'],
             ['RRRR', '0:0:N'],
             ['RLL', '0:0:W'],
+        ];
+    }
+
+    private function moveNorthDataProvider(): array
+    {
+        return [
+            ['M', '0:1:N'],
+            ['MM', '0:2:N'],
+            ['MMM', '0:3:N'],
+            ['MMMMMMMMMM', '0:0:N'],
+        ];
+    }
+    private function moveEastDataProvider(): array
+    {
+        return [
+            ['RM', '1:0:N'],
+            ['RMM', '2:0:N'],
+            ['RMMM', '3:0:N'],
+            ['RMMMMMMMMMM', '0:0:N'],
         ];
     }
 }
