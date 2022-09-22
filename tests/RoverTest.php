@@ -9,26 +9,25 @@ use PHPUnit\Framework\TestCase;
 
 final class RoverTest extends TestCase
 {
-	public function testItIsInstanciable() {
-		$testedInstance = new Rover();
-        $this->assertIsObject($testedInstance);
-	}
-
-    public function testItReturnsAString(): void
+    /** @dataProvider turnCommandsDataProvider */
+    public function testItRotates360(string $command, string $expectedOutput): void
     {
         $rover = new Rover();
-        $this->assertIsString($rover->execute('R'));
+        $output = $rover->execute($command);
+        $this->assertSame($expectedOutput, $output);
     }
 
-    public function testItStartsFrom00AndFacingNorth(): void
+    public function turnCommandsDataProvider(): array
     {
-        $rover = new Rover();
-        $this->assertSame('0:0:E', $rover->execute('R'));
-    }
-
-    public function testItCanRotateLeft(): void
-    {
-        $rover = new Rover();
-        $this->assertSame('0:0:W', $rover->execute('L'));
+        return [
+            ['R', '0:0:E'],
+            ['RR', '0:0:S'],
+            ['RRR', '0:0:W'],
+            ['RRRR', '0:0:N'],
+            ['L', '0:0:W'],
+            ['LL', '0:0:S'],
+            ['LLL', '0:0:E'],
+            ['LLLL', '0:0:N'],
+        ];
     }
 }
