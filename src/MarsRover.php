@@ -8,11 +8,21 @@ class MarsRover
 {
     private const DIRECTIONS = [ 'N', 'W', 'S', 'E' ];
 
+    private int $actualDirection = 0;
+
     public function execute(string $command = ''): string
     {
-        $numberOfL = strlen($command);
+        $commandDirections = str_split($command);
 
-        $direction = self::DIRECTIONS[$numberOfL % 4];
+        foreach ($commandDirections as $direction) {
+            if ($direction === 'L') {
+                $this->actualDirection++;
+            } else {
+                $this->actualDirection--;
+            }
+        }
+
+        $direction = self::DIRECTIONS[$this->actualDirection % 4];
 
         return "0:0:$direction";
     }
