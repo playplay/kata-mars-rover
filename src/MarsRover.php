@@ -12,13 +12,17 @@ class MarsRover
 
     public function execute(string $command = ''): string
     {
-        $commandDirections = str_split($command);
+        $commandDirections = array_filter(str_split($command));
 
         foreach ($commandDirections as $direction) {
             if ($direction === 'L') {
                 $this->actualDirection++;
             } else {
                 $this->actualDirection--;
+
+                if ($this->actualDirection < 0) {
+                    $this->actualDirection += 4;
+                }
             }
         }
 
