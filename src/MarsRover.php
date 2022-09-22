@@ -6,22 +6,14 @@ namespace MarsRover;
 
 class MarsRover
 {
+    private const DIRECTIONS = [ 'N', 'W', 'S', 'E' ];
+
     public function execute(string $command = ''): string
     {
         $numberOfL = strlen($command);
 
-        if ($command === 'L') {
-            return "0:0:W";
-        } elseif ($command === 'LL') {
-            return "0:0:S";
-        } elseif ($command === 'LLL') {
-            return "0:0:E";
-        } elseif ($command === 'LLLL') {
-            return "0:0:N";
-        } elseif ($command === 'LLLLL') {
-            return "0:0:W";
-        } else {
-            return "0:0:N";
-        }
+        $direction = self::DIRECTIONS[$numberOfL % 4];
+
+        return "0:0:$direction";
     }
 }
