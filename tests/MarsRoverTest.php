@@ -9,11 +9,24 @@ final class MarsRoverTest extends TestCase
     public function testItStartsInTheInitialPositionOfTheTable(): void
     {
         // Arrange
+        $sut = new MarsRover();
 
         // Act
-        $position = $this->sut->execute();
+        $position = $sut->execute();
 
         // Assert
-        $this->assertSame('0:0:N',$position);
+        $this->assertSame('0:0:N', $position);
     }
+
+//    public function testItRotatesToTheLeft(): void
+//    {
+//        // Arrange
+//        $sut = new MarsRover();
+//
+//        // Act
+//        $position = $sut->execute('L');
+//
+//        // Assert
+//        $this->assertSame('0:0:W', $position);
+//    }
 }
