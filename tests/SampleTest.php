@@ -34,6 +34,15 @@ class SampleTest extends TestCase
         $this->assertSame($expectedOutput, $position);
     }
 
+    public function testItMovesUpWhenDirectionIsNorth(): void
+    {
+        $input = 'M';
+
+        $position = $this->sut->execute($input);
+
+        $this->assertSame('0:1:N', $position);
+    }
+
     private function switchDirectionDataProvider(): array
     {
         return [
@@ -41,6 +50,8 @@ class SampleTest extends TestCase
             ['L', '0:0:W'],
             ['LL', '0:0:S'],
             ['LLL', '0:0:E'],
+            ['RRRR', '0:0:N'],
+            ['RLL', '0:0:W'],
         ];
     }
 }
