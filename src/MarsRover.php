@@ -52,13 +52,32 @@ final class MarsRover
 
     private function move(string $direction, string $position): string
     {
-        // $position => 0:0
         [$x, $y] = explode(':', $position);
 
-        $y++;
+        if ($direction === 'N') {
+            $y++;
+        } else if ($direction === 'S') {
+            $y--;
+        } else if ($direction === 'E') {
+            $x++;
+        } else if ($direction === 'W') {
+            $x--;
+        }
 
         if ($y === 10) {
             $y = 0;
+        }
+
+        if ($y === -1) {
+            $y = 9;
+        }
+
+        if ($x === 10) {
+            $x = 0;
+        }
+
+        if ($x === -1) {
+            $x = 9;
         }
 
         return $x . ':' . $y;
