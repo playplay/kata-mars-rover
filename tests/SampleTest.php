@@ -24,30 +24,23 @@ class SampleTest extends TestCase
         $this->assertSame('0:0:N', $position);
     }
 
-    public function testItTurnsRightWhenRInput(): void
+    /**
+     * @dataProvider switchDirectionDataProvider
+     */
+    public function testItTurnsTwoTimesLeftWhenLLInput(string $input, string $expectedOutput): void
     {
-        $input = 'R';
-
         $position = $this->sut->execute($input);
 
-        $this->assertSame('0:0:E', $position);
+        $this->assertSame($expectedOutput, $position);
     }
 
-    public function testItTurnsLeftWhenLInput(): void
+    private function switchDirectionDataProvider(): array
     {
-        $input = 'L';
-
-        $position = $this->sut->execute($input);
-
-        $this->assertSame('0:0:W', $position);
-    }
-
-    public function testItTurnsTwoTimesLeftWhenLLInput(): void
-    {
-        $input = 'LL';
-
-        $position = $this->sut->execute($input);
-
-        $this->assertSame('0:0:S', $position);
+        return [
+            ['R', '0:0:E'],
+            ['L', '0:0:W'],
+            ['LL', '0:0:S'],
+            ['LLL', '0:0:E'],
+        ];
     }
 }

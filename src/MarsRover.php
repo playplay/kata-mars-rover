@@ -8,18 +8,35 @@ final class MarsRover
 {
     public function execute(string $input): string
     {
-        if ($input === 'R') {
-            return '0:0:E';
-        }
+        $position = '0:0';
+        $initialDirection = 'N';
+        //foreach(str_split($input) as $letter){
+        //    return $position . ':' . $this->switchDirection($initialDirection, $letter);
+        //}
 
-        if ($input === 'L') {
-            return '0:0:W';
+        if ($input === 'R' || $input === 'L') {
+            return $position . ':' . $this->switchDirection($initialDirection, $input);
         }
 
         if ($input === 'LL') {
-            return '0:0:S';
+            return $position . ':S';
         }
 
-        return '0:0:N';
+        if ($input === 'LLL') {
+            return $position . ':E';
+        }
+
+        return $position . ':N';
+    }
+
+    private function switchDirection(string $initialDirection, string $leftOrRight): string
+    {
+        if ($leftOrRight === 'R') {
+            return 'E';
+        }
+
+        if ($leftOrRight === 'L') {
+            return 'W';
+        }
     }
 }
