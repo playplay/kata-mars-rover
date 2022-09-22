@@ -6,6 +6,6 @@ class Rover
 {
     public function execute(): string
     {
-        return '';
+        return '0:0:E';
     }
 }

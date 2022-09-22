@@ -19,4 +19,10 @@ final class RoverTest extends TestCase
         $rover = new Rover();
         $this->assertIsString($rover->execute());
     }
+
+    public function testItStartsFrom00AndFacingNorth(): void
+    {
+        $rover = new Rover();
+        $this->assertSame('0:0:E', $rover->execute('R'));
+    }
 }
