@@ -25,7 +25,11 @@ class MarsRover
                     $this->actualDirection += 4;
                 }
             } else {
-                
+                $this->actualY++ % 10;
+
+                if ($this->actualY === 10) {
+                    $this->actualY = 0;
+                }
             }
         }
 
