@@ -10,8 +10,10 @@ class MarsRover
     {
         if ($command === '') {
             return "0:0:N";
-        } else {
+        } elseif ($command === 'L'){
             return "0:0:W";
+        } else {
+            return "0:0:S";
         }
     }
 
