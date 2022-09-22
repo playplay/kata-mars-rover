@@ -9,6 +9,7 @@ class MarsRover
     private const DIRECTIONS = [ 'N', 'W', 'S', 'E' ];
 
     private int $actualDirection = 0;
+    private int $actualY = 0;
 
     public function execute(string $command = ''): string
     {
@@ -17,17 +18,19 @@ class MarsRover
         foreach ($commandDirections as $direction) {
             if ($direction === 'L') {
                 $this->actualDirection++;
-            } else {
+            } elseif ($direction === 'R') {
                 $this->actualDirection--;
 
                 if ($this->actualDirection < 0) {
                     $this->actualDirection += 4;
                 }
+            } else {
+                
             }
         }
 
         $direction = self::DIRECTIONS[$this->actualDirection % 4];
 
-        return "0:0:$direction";
+        return "0:{$this->actualY}:{$direction}";
     }
 }
