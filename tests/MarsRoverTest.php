@@ -18,15 +18,27 @@ final class MarsRoverTest extends TestCase
         $this->assertSame('0:0:N', $position);
     }
 
-//    public function testItRotatesToTheLeft(): void
-//    {
-//        // Arrange
-//        $sut = new MarsRover();
-//
-//        // Act
-//        $position = $sut->execute('L');
-//
-//        // Assert
-//        $this->assertSame('0:0:W', $position);
-//    }
+    public function testItRotatesToTheLeft(): void
+    {
+        // Arrange
+        $sut = new MarsRover();
+
+        // Act
+        $position = $sut->execute('L');
+
+        // Assert
+        $this->assertSame('0:0:W', $position);
+    }
+
+    public function testItRotatesTwiceToTheLeft(): void
+    {
+        // Arrange
+        $sut = new MarsRover();
+
+        // Act
+        $position = $sut->execute('LL');
+
+        // Assert
+        $this->assertSame('0:0:S', $position);
+    }
 }

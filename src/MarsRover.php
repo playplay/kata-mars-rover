@@ -6,9 +6,9 @@ namespace MarsRover;
 
 class MarsRover
 {
-    public function execute(?string $command): string
+    public function execute(string $command = ''): string
     {
-        if ($command === null) {
+        if ($command === '') {
             return "0:0:N";
         } else {
             return "0:0:W";
